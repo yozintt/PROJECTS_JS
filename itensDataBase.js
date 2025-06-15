@@ -26,12 +26,12 @@ const itensDataBase = [
   },
 ];
 
-const createObject = (name, quantity, price, id) => {
+const createObject = (name, quantity, price) => {
   itensDataBase.push({
     name: name,
     quantity: quantity,
     price: price,
-    id: id,
+    id: itensDataBase.length + 1,
   });
 };
 createObject("key", 2, 10.5, 4);
@@ -45,7 +45,7 @@ const editObject = (name, quantity, price, id) => {
     }
   }
 };
-editObject("MacBook", 2, 1200.5, 4);
+
 const deleteObject = (id) => {
   const itemDeleted = itensDataBase.pop();
   for (let i = 0; i < itensDataBase.length; i++) {
@@ -54,7 +54,6 @@ const deleteObject = (id) => {
     }
   }
 };
-deleteObject(1);
 
 const showObjectById = (id) => {
   for (let i = 0; i < itensDataBase.length; i++) {
@@ -63,9 +62,17 @@ const showObjectById = (id) => {
     }
   }
 };
-console.log(showObjectById(2));
 
 const showAllObjects = () => {
   return itensDataBase;
 };
-console.log(showAllObjects());
+
+const itens = {
+  create: createObject,
+  edit: editObject,
+  delete: deleteObject,
+  list: showAllObjects,
+  get: showObjectById,
+};
+itens.create("Samsung Galaxy Ultra 24", 1, 1000.0);
+console.log(itens.get(5));

@@ -34,7 +34,7 @@ const createObject = (name, quantity, price) => {
     id: itensDataBase.length + 1,
   });
 };
-createObject("key", 2, 10.5, 4);
+createObject("key", 2, 10.5);
 
 const editObject = (name, quantity, price, id) => {
   const newObject = { name: name, quantity: quantity, price: price, id: id };
@@ -75,4 +75,4 @@ const itens = {
   get: showObjectById,
 };
 itens.create("Samsung Galaxy Ultra 24", 1, 1000.0);
-console.log(itens.get(5));
+console.log(itens.list());

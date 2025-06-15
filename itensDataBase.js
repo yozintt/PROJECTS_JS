@@ -55,10 +55,6 @@ const deleteObject = (id) => {
   }
 };
 deleteObject(1);
-const showAllObjects = () => {
-  return itensDataBase;
-};
-console.log(showAllObjects());
 
 const showObjectById = (id) => {
   for (let i = 0; i < itensDataBase.length; i++) {
@@ -68,3 +64,8 @@ const showObjectById = (id) => {
   }
 };
 console.log(showObjectById(2));
+
+const showAllObjects = () => {
+  return itensDataBase;
+};
+console.log(showAllObjects());

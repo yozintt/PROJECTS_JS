@@ -32,6 +32,10 @@ const createVideos = (name, time) => {
   dataBase.push({ name: name, time: time, id: dataBase.length + 1 });
 };
 
+const showAllVideos = () => {
+  return dataBase;
+};
+
 const editVideos = (name, time, id) => {
   const newVideo = { name: name, time: time, id: id };
 
@@ -51,16 +55,14 @@ const showVideoById = (id) => {
 };
 
 const deleteVideo = (id) => {
-  const deletedVideo = dataBase.pop();
   for (let i = 0; i < dataBase.length; i++) {
     if (dataBase[i].id === id) {
-      dataBase[i] = deletedVideo;
+      for (let j = i; j < dataBase.length - 1; j++) {
+        dataBase[j] = dataBase[j + 1];
+      }
+      dataBase.length = dataBase.length - 1;
     }
   }
-};
-
-const showAllVideos = () => {
-  return dataBase;
 };
 
 const videos = {
@@ -75,5 +77,5 @@ videos.create("Video 5", 5.5);
 console.log(videos.list());
 videos.edit("Video Q", 12.4, 2);
 console.log(videos.get(2));
-videos.delete(5);
+videos.delete(1);
 console.log(videos.list());

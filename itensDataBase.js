@@ -47,10 +47,12 @@ const editObject = (name, quantity, price, id) => {
 };
 
 const deleteObject = (id) => {
-  const itemDeleted = itensDataBase.pop();
   for (let i = 0; i < itensDataBase.length; i++) {
     if (itensDataBase[i].id === id) {
-      itensDataBase[i] = itemDeleted;
+      for (let j = i; j > dataBase.length - 1; j++) {
+        dataBase[j] = dataBase[j + 1];
+      }
+      dataBase.length = dataBase.length - 1;
     }
   }
 };
